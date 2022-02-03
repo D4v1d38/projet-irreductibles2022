@@ -1,0 +1,145 @@
+<!-- HOMPAGE -->
+<section class="section slider-section">
+    <h1 class="h1">L' Actu des Irrés</h1>
+    <!-- News : slider for 3 latest news and other news: show news 4 to 8 -->
+    <div class="news-wrapper " id="slider-wrapper">
+        <p class="slide-alaune-title">A LA UNE</p>
+        <!-- Slider -->
+        <div class="slider">
+            <?php if(count($dataSlide) >=1): ?>
+            <article class=" slide active" >
+                <a href="index.php?action=article&id_article=<?=htmlspecialchars($dataSlide[0]['id_article'])?>" title="A la une">
+                <img src="www/img/articles/<?= htmlspecialchars($dataSlide[0]['image']) ?>" alt="<?= htmlspecialchars($dataSlide[0]['image'])?>">
+                    <div class="title-slide">
+                        <small><?= htmlspecialchars($dataSlide[0]['dateformat']) ?></small>
+                        <h2><?= htmlspecialchars($dataSlide[0]['titre']) ?></h2>    
+                    </div>
+                </a>
+            </article>
+            <?php endif; ?>
+
+            <?php if(count($dataSlide) >=2): ?>
+            <article class=" slide " >
+                <a href="index.php?action=article&id_article=<?=htmlspecialchars($dataSlide[1]['id_article'])?>" title="A la une">
+                    <img src="www/img/articles/<?= htmlspecialchars($dataSlide[1]['image']) ?>" alt="<?= htmlspecialchars($dataSlide[1]['image'])?>">
+                    <div class="title-slide">
+                        <small><?= htmlspecialchars($dataSlide[1]['dateformat']) ?></small>
+                        <h2><?= htmlspecialchars($dataSlide[1]['titre']) ?></h2>    
+                    </div>
+                </a>
+            </article>
+            <?php endif; ?>
+
+            <?php if(count($dataSlide) >=3): ?>
+            <article class=" slide " >
+                <a href="index.php?action=article&id_article=<?=htmlspecialchars($dataSlide[2]['id_article'])?>" title="A la une">
+                    <img src="www/img/articles/<?= htmlspecialchars($dataSlide[2]['image']) ?>" alt="<?= htmlspecialchars($dataSlide[2]['image'])?>">
+                    <div class="title-slide">
+                        <small><?= htmlspecialchars($dataSlide[2]['dateformat']) ?></small>
+                        <h2><?= htmlspecialchars($dataSlide[2]['titre'])?></h2>    
+                    </div>
+                </a>
+            </article>
+            <?php endif; ?>
+
+            <div class=" btn-nav left"><i class="fas fa-caret-left"></i></div>  
+            <div class=" btn-nav right"><i class="fas fa-caret-right"></i></div>      
+        </div> 
+        <!--end slider & start other news-->
+        <div  class="other-news-list">
+            <ul >
+                <li> <h2 class="h2">A lire aussi</h2></li>
+                <?php for($i=3; $i < sizeof($dataSlide); $i++):?>
+                    <li ><a class="article-list" href="index.php?action=article&id_article=<?=$dataSlide[$i]['id_article']?>" title="A lire aussi"><?= htmlspecialchars($dataSlide[$i]['titre'])?></a></li>
+                <?php endfor;?>
+            </ul>
+        </div>
+    </div>
+        <!-- end of News section -->
+</section>
+
+<!-- Social network links -->
+<section class="section social-section ">
+    <div class="social-box">
+        <h2 class="h2 h-white">Restons connectés !</h2>
+        <div class="social-logo">
+            <div><a href="https://www.facebook.com/les.irreductibles.Grenoble" title="lien facebook"><i class="fab fa-facebook"></i></a></div>
+            <div><a href="https://www.instagram.com/irres1985/" title="lien instagram"><i class="fab fa-instagram"></i></a></div>
+            <div><a href="https://twitter.com/Irres1985" title="lien twitter"><i class="fab fa-twitter"></i></a></div>
+            <div><a href="https://www.youtube.com/channel/UCbt5AB6Hub9TdX-Huj7njWQ/featured" title="lien youtube"><i class="fab fa-youtube"></i></a></div>
+        </div>
+    </div>
+</section>
+
+<!-- Club presentation cards -->
+<section class="section ">
+    <h2 class="h2">Notre Club</h2>
+    <div class="section-card">
+        <div class="info-card">
+            <figure>
+                <img src="www/css/assets/img/tribune.jpg" alt="photo de la tribune">
+            </figure>
+
+            <div class="info-card-content">
+                <h3 class="h3">Qui sommes-nous ?</h3>
+                <p>Découvrez qui nous sommes et ce que nous faisons que ce soit en tribune ou en dehors des matchs !</p>
+                <a href="index.php?action=static_page&page=quisommesnous" class="more" title="Qui sommes-nous?">En savoir plus</a>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <figure>
+                <img src="www/css/assets/img/deplacement.jpg" alt="affiche déplacement">
+            </figure>
+
+            <div class="info-card-content">
+                <h3 class="h3">Les déplacements</h3>
+                <p>Envie d’encourager les Brûleurs de loups à l’extérieur avec nous ? On explique comment ça se passe !</p>
+                <a href="index.php?action=static_page&page=lesdeplacements" class="more" title="les déplacements">En savoir plus</a>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <figure>
+                <img src="www/css/assets/img/tribunei.jpg" alt="photo de la tribune i">
+            </figure>
+
+            <div class="info-card-content">
+                <h3 class="h3">La tribune i</h3>
+                <p>Envie d’encourager les Brûleurs de loups à nos côtés en tribune ? Rendez-vous dans cette section pour en savoir plus</p>
+                <a href="index.php?action=static_page&page=latribunei" class="more" title="La tribune i">En savoir plus</a>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <figure>
+                <img src="www/css/assets/img/maillotirre.jpg" alt="image llogo et maillot irréductibles">
+            </figure>
+
+            <div class="info-card-content">
+                <h3 class="h3">Nous rejoindre</h3>
+                <p>Envie de faire partie de la famille irré ? N'hésitez plus et venez rejoindre la tribune i pour chanter avec nous !</p>
+                <a href="index.php?action=static_page&page=nousrejoindre" class="more" title="Nous rejoindre">En savoir plus</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Game section -->
+<section class="section gameday-section">
+    <div class="gameday-box">
+        <div>
+            <h2 class="h2 h-white">Match du jour</h2>
+            <div id="gameDay"></div>
+        </div>
+        
+        <div>
+            <h2 class="h2 h-white">Billeterie BDL</h2>
+            <div class=" game-info">
+                <p>Membres BDL Nation</p>
+                <p>Pensez à réserver votre place 7 jours avant la rencontre !</p>
+                <a href="https://web.digitick.com/ext/billetterie5/?site=bruleursdeloups2" class="more" title="lien vers la billeterie des BDL">Accès a la billeterie BDL</a>
+            </div>
+        </div>
+    </div>
+</section>

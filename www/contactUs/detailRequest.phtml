@@ -1,0 +1,25 @@
+<?php 
+    if(!$this->connect ->isAdmin()): 
+        header("location:index.php");
+        exit();
+    endif; 
+?>
+<!-- SECTION : mesage details -->
+<section class="section">
+    <h1 class="h1">Messages envoyés par le formulaire de contact</h1>
+    <article class="details-request">
+        <header>
+            <h2 class="h2">Message N° :<?= htmlspecialchars($detailsRequest['id_contact']) ?> </h2>
+            <p>envoyé par : <?= htmlspecialchars($detailsRequest['prenom'])." ".htmlspecialchars($detailsRequest['nom']) ?></p>
+            <p>mail du contact : <?=htmlspecialchars($detailsRequest['email']) ?></p>
+            <p>téléphone du: <?=htmlspecialchars($detailsRequest['telephone']) ?></p>
+            <p>envoyé le : <?= htmlspecialchars($detailsRequest['date']) ?></p>
+            <p>Objet du message : <?=htmlspecialchars($detailsRequest['objet']) ?></p>       
+        </header>
+
+        <p><?=htmlspecialchars($detailsRequest['message']) ?></p>
+        
+        <a class="link" href="index.php?action=message_manager">Retour à la liste des messages</a>
+    </article>
+
+</section>

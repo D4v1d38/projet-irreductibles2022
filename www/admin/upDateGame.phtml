@@ -1,0 +1,84 @@
+<?php 
+    if(!$this->connect ->isAdmin()): 
+        header("location:index.php");
+        exit();
+    endif; 
+?>
+<!-- PAGE Update game Show -->
+<section class="section">
+
+    <h2 class="h2">Modifier une rencontre</h2>
+    
+    <!-- Show info message if message is isset -->
+    <?php if(isset($_GET['message'])): ?>
+        <p class="<?= htmlspecialchars($_GET['class']) ?>"><?= htmlspecialchars($_GET['message']) ?><p>
+    <?php endif; ?>
+
+    <!-- Form for upadate a game -->
+    <form class="form"  action="index.php?action=update_game" method="POST" >
+    <input type="hidden" name="id_game" value="<?= htmlspecialchars($oneGame['id']) ?>">
+        <div>
+            <label for="competition">Compétition: </label>
+            <select name="competition" id="competition">
+                    <option value="<?=htmlspecialchars($oneGame['competition']) ?>"><?=htmlspecialchars($oneGame['competition']) ?></option>
+                    <option value="Ligue Magnus">Ligue Magnus</option>
+                    <option value="coupe de france">Coupe de France</option>
+                    <option value="amical">Amical</option>
+                    <option value="chl">CHL</option>
+                    <option value="continental">Continental Cup</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="date_match">Date de la rencontre:</label>
+            <input type="date" name="date_match" id="date_match" value="<?=htmlspecialchars($oneGame['date_match']) ?>" required>
+        </div>
+
+        <div>
+            <label for="domicile">Equipe Domicile: </label>
+            <select name="domicile" id="domicile">
+                <option value="<?=htmlspecialchars($oneGame['id_teamDom']) ?>"><?= htmlspecialchars($oneGame['villeDom']) ?></option>
+                <?php foreach($teams as $team): ?>
+                    <option value="<?=htmlspecialchars($team['id_equipe']) ?>"><?= htmlspecialchars($team['ville']) ?></option>
+                <?php endforeach;?>
+            </select>
+        </div>
+
+        <div>
+            <label for="score_dom">Score domicile:  </label>
+            <input type="number" min="0" max="20" name="score_dom" id="score_dom" value="<?=htmlspecialchars($oneGame['scoreDom']) ?>">
+        </div>
+
+        <div>
+            <label for="exterieur">Equipe Exterieur: </label>
+            <select name="exterieur" id="exterieur">
+                <option value="<?=htmlspecialchars($oneGame['id_teamExt']) ?>"><?= htmlspecialchars($oneGame['villeExt']) ?></option>
+                <?php foreach($teams as $team): ?>
+                    <option value="<?=htmlspecialchars($team['id_equipe']) ?>"><?= htmlspecialchars($team['ville']) ?></option>
+                <?php endforeach;?>
+            </select>
+        </div>
+
+        <div>
+            <label for="score_ext">Score Exterieur:</label>
+            <input type="number" min="0" max="20" name="score_ext" id="score_ext" value="<?=htmlspecialchars($oneGame['scoreExt']) ?>">
+        </div>
+
+        <div>
+            <label for="statut">Report ou annulation : </label>
+            <select name="statut" id="statut">
+                    <option value="<?=htmlspecialchars($oneGame['statut']) ?>"><?=htmlspecialchars($oneGame['statut']) ?></option>
+                    <option value="conforme">conforme</option>
+                    <option value="reporté">report</option>
+                    <option value="annulé">annulation</option>
+            </select>
+        </div>
+        
+
+        <div class="submit-contenair">
+            <input class="btn-link" type="submit" name="submit" value="Valider">
+            <input class="btn-link" type="reset" name="Annuler" value="effacer le contenu">
+        </div>
+
+    </form>
+</section>

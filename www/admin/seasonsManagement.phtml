@@ -1,0 +1,53 @@
+<?php 
+    if(!$this->connect ->isAdmin()): 
+        header("location:index.php");
+        exit();
+    endif; 
+?>
+<!-- PAGE seasons management -->
+<section class="section">
+    
+    <!-- Show info message if message is isset -->
+    <?php if(isset($_GET['message'])): ?>
+    <p class="<?= htmlspecialchars($_GET['class']) ?>"><?= htmlspecialchars($_GET['message']) ?><p>
+    <?php endif; ?>
+
+    <h1 class="h1">Gestion des effectifs</h1>
+
+    <nav>
+        <ul class="admin-tools">
+            <li><a class="link" href="index.php?action=admin" title="menu admin"><i class="fas fa-arrow-circle-left"></i></a></li>
+            <li><a class="link" href="index.php?action=player_to_season" title="affilier un joueur"><i class="fas fa-users"></i></a></li>
+        </ul>
+    </nav>
+
+    <!-- table for show and manage seasons -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Saison</th>
+                <th>Numéro</th>
+                <th>Joueur</th>
+                <th>Retirer</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach($playersManage as $item): ?>
+            <tr>
+                <td data-label="Saison"><?= htmlspecialchars($item['annee']); ?></td>
+                <td data-label="Numéro"><?= htmlspecialchars($item['numero']); ?></td>
+                <td data-label="Joueur"><?= htmlspecialchars($item['prenom'])." " .htmlspecialchars($item['nom']); ?></td>
+                <td>
+                    <form method="POST" action="index.php?action=remove_player_of_season">
+                        <input type ="hidden" name="remove_player_id_season" value="<?=htmlspecialchars($item['id_saison'])?>">
+                        <input type ="hidden" name="remove_player_id_player" value="<?=htmlspecialchars($item['id_joueur'])?>">
+                        <button class="btn-delete"  type="submit"><i class="fas fa-user-minus"></i></button>
+                    </form>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+</section>

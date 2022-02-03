@@ -1,0 +1,19 @@
+<!-- SECTION show details of an article -->
+
+<section class="section">
+    <h1 class="h1">L' article</h1>
+
+    <article class="article-details">
+        <header >
+            <small class="category"><?= htmlspecialchars($oneArticle['nom_cat'])?></small>
+            <div class="article-header">
+                <h2 class="h2 h-red"><?= htmlspecialchars($oneArticle['titre'])?></h2>
+                <small>Ecrit par <?= htmlspecialchars($oneArticle['prenom'])."  le ".htmlspecialchars($oneArticle['dateformat'])?></small>
+            </div>
+        </header>
+        <img src="www/img/articles/<?= htmlspecialchars($oneArticle['image'])?>" alt="<?= htmlspecialchars($oneArticle['image'])?>">
+        <p><?= htmlspecialchars($oneArticle['contenu'])?></p>
+    </article>
+</section>
+
+

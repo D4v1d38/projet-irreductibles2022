@@ -1,0 +1,43 @@
+<section class="section">
+    <h1 class="h1">L' équipe</h1>
+
+    <!-- Show Team stats   -->
+    <?php if($teamStatistics != null): ?>
+    <div class="team-statistics">
+        <p>Moyennes de l'effectif : </p>
+        <p><i class="fas fa-users"></i><?= htmlspecialchars($teamStatistics['nbPlayers'])." joueurs" ?></p>
+        <p><i class="fas fa-ruler-vertical"></i><?= htmlspecialchars(round($teamStatistics['avgHeight'],2))." cm" ?></p>
+        <p><i class="fas fa-weight-hanging"></i><?= htmlspecialchars(round($teamStatistics['avgWeight'],2))." Kg" ?></p>
+    </div>
+    <p><em>Survolez les joueurs pour découvrir leur profil !</em><p>
+    <?php endif; ?>
+    
+    <!-- Show Team players-->
+    <div class="player-wrapper">
+        <?php foreach($teamplayers as $item): ?>
+        <div class="player-card">
+
+            <div class="player-content">
+                <figure class="player-portrait">
+                    <img  src="www/img/players/<?= htmlspecialchars($item['photo']) ?>" alt="photo de <?= htmlspecialchars($item['prenom'])." ".htmlspecialchars($item['nom']) ?>">
+                </figure>          
+                <div class=player-infos>
+                    <div>
+                    <p><?= "#". htmlspecialchars($item['numero'])  ?></p>
+                    <p><?= htmlspecialchars($item['naissance'])." (". htmlspecialchars($item['age']) ."ans)"  ?></p>
+                    <p><?= htmlspecialchars($item['nationalite'])   ?></p>
+                    <p><?= htmlspecialchars($item['poste'])  ?></p>
+                    <p><?= htmlspecialchars($item['taille'])." cm"  ?></p>
+                    <p><?= htmlspecialchars($item['poids'])." Kg"  ?></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="player-name">
+                    <p><?= htmlspecialchars($item['numero'])  ?></p>
+                    <p><?= htmlspecialchars($item['prenom'])." ". htmlspecialchars($item['nom'])  ?></p>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    </div>
+</section>

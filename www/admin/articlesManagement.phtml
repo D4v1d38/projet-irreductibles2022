@@ -1,0 +1,61 @@
+<?php 
+    if(!$this->connect ->isAdmin()): 
+        header("location:index.php");
+        exit();
+    endif; 
+?>
+
+<!-- PAGE : article management -->
+<section class="section">
+    <h1 class="h1">Gestion des articles</h1>
+
+    <!-- tools menu -->
+    <nav>
+        <ul class="admin-tools">
+            <li><a class="link" href="index.php?action=admin" title="menu admin"><i class="fas fa-arrow-circle-left"></i></a></li>
+            <li><a class="link" href="index.php?action=create_article" title ="ajouter un article"><i class="far fa-plus-square"></i></a></li>
+        </ul>
+    </nav>
+    
+    <!-- show info message on the page is message is isset -->
+    <?php if(isset($_GET['message'])): ?>
+    <p class="<?= htmlspecialchars($_GET['class']) ?>"><?= htmlspecialchars($_GET['message']) ?><p>
+    <?php endif; ?>
+    
+    <!-- Table for show and manage articles  -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>créé le</th>
+                <th>Auteur</th>
+                <th>Catégorie</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <?php foreach($articlesManage as $item): ?>
+        <tr>
+            <td data-label="Titre"><?= htmlspecialchars($item['titre']); ?></td>
+            <td data-label="créé le"><?= htmlspecialchars($item['dateformat']); ?></td>
+            <td data-label="Auteur"><?= htmlspecialchars($item['prenom'])." " .htmlspecialchars($item['nom']); ?></td>
+            <td data-label="Catégorie"><?= htmlspecialchars($item['nom_cat']); ?></td>
+            <td>
+                <a class="btn-modif" href="index.php?action=update_article&id_article=<?=htmlspecialchars($item['id_article'])?>" title="modification article"><i class="fas fa-pencil-alt"></i></a>
+            </td>
+            <?php if($adminSession->isAdmin() && $_SESSION['niveauAdmin']<=10):?>
+            <td>
+                <form  method="POST" action="index.php?action=delete_article">
+                    <input type="hidden" name="delete-image" value="<?=htmlspecialchars($item['image'])?>">
+                    <input type="hidden" name="delete_article" value="<?=htmlspecialchars($item['id_article'])?>">
+                    <button class="btn-delete" type="submit" value='supprimer' ><i class="fas fa-trash-alt"></i></button>
+                </form>
+            </td>
+            <?php endif; ?>
+        </tr>    
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</section>

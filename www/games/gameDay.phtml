@@ -1,0 +1,39 @@
+<!-- Show gameday in Homepage or  message  -->
+
+<!-- Show message if no game is schedule today  -->
+<?php if($gameDayAjax == false): ?>
+<div class="scoring-box">
+<p>Les BDL ne jouent pas aujourd'hui ! </p>
+<a class="link" href="index.php?action=calendar" title="calendrier">Voir le calendrier</a>
+</div>
+
+<?php else: ?>
+<!-- Show gameday in Homepage -->
+<div class="scoring-box">
+    <p class="scoring-infos" ><?= htmlspecialchars($gameDayAjax['dateGame'])?><p>
+    <p><?= htmlspecialchars($gameDayAjax['competition'])." " ?><?php if( !empty($gameDayAjax['statut']) && $gameDayAjax['statut']!="conforme" ): ?><span class="gameReport"><?= htmlspecialchars($gameDayAjax['statut'])?></span> <?php endif; ?></p>
+
+        <div class="scoring-details">
+            <div class="scoring-team">
+                <p><?= htmlspecialchars($gameDayAjax['villeDom'])?></P>
+                <small><?= htmlspecialchars($gameDayAjax['equipeDom'])?></small>
+            </div>
+
+            <div class="scoring-score">
+                <p><?= htmlspecialchars($gameDayAjax['scoreDom'])?></P>
+                <p>-</P>
+                <p><?= htmlspecialchars($gameDayAjax['scoreExt'])?></P>
+            </div>
+
+            <div class="scoring-team">
+                <p><?= htmlspecialchars($gameDayAjax['villeExt'])?></P>
+                <small><?= htmlspecialchars($gameDayAjax['equipeExt'])?></small>
+            </div>
+                
+        </div>
+</div>
+<?php endif; ?>
+
+
+
+

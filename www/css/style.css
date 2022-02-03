@@ -1,0 +1,1596 @@
+/*================================ ---------COMMON STYLES------------=================================*/
+/* ************************************************************************************************** */
+/*---------COLORS----------------*/
+:root
+{
+	--orange:rgb(200, 125, 50);
+	--orange_a:rgb(200, 125, 50,0.5);
+	--grey:rgb(210, 210, 210);
+	--mainblue:rgb(40, 50, 110);
+	--mainblue_a:   rgba(40, 50, 110,.9);
+	--thirdblue:rgb(35, 100, 165);
+	--thirdblue_a:  rgb(210, 224, 241);
+	--white:rgb(255, 255, 255);
+	--white-a:rgba(255, 255, 255,0.7);
+	--black:rgb(0,0,0);
+	--shadow:rgba(0,0,0,0.5);
+	--red:rgb(128, 0, 0);
+	--success:rgb(77, 141, 106);
+	--info:rgb(0, 150, 180,0.5);
+	--row:rgb(0, 150, 180,0.2);
+	--btn:rgb(239,239,239);
+}
+
+/*---------GLOBAL ELEMENTS-------*/
+*
+{
+	box-sizing: border-box;
+}
+
+html
+{
+	font-size: 62.5%;
+}
+
+img
+{
+	max-width: 100%;
+}
+
+figure
+{
+	margin:0;
+}
+
+/* ---------- LIST global Style*/
+ul,li
+{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+iframe{
+	max-width: 100%;
+    border-style: none;
+}
+
+/* ---------- CONTAINER (mobile-first)*/
+.container
+{
+	width: 100%;
+}
+
+/* --------- TITLES GLOBAL STYLES*/
+.h1
+{
+	font-size: 3rem;
+}
+
+.h2
+{
+	font-size: 2.5rem;
+	margin:0;
+	padding: 1.6rem;
+}
+
+.h3
+{
+	font-size: 2rem;
+}
+
+.h1,.h2,.h3
+{
+	font-family:'Kanit', sans-serif;
+	font-weight: normal;
+	text-align: center;
+	color: var(--mainblue);
+	text-shadow: .2rem .2rem .5rem var(--shadow);
+}
+
+.h2bis
+{
+	font-family: 'Gemunu Libre', sans-serif;
+	letter-spacing: 0.4rem;
+	font-size: 2.5rem;
+	background-color: var(--mainblue);
+	color: var(--white);
+	width: 15rem;
+	text-align: center;
+	margin-left :auto;
+	margin-right :auto;
+	padding:0.5rem 2rem;
+}
+
+.h-red
+{
+	color: var(--red);
+}
+
+.h-white
+{
+	color: var(--white);
+}
+
+.h-orange
+{
+	color: var(--orange);
+}
+
+/* ---------- SECTIONS  styles */
+.section,.slider-section
+{
+	background-color: var(--white);
+	padding: 1rem ;
+	background-color: var(--thirdblue_a);
+}
+
+.slider-section
+{
+	padding: 0;
+}
+
+/* ---------- GLOBAL LINKS*/
+a
+{
+	text-decoration: none;
+	color: var(--black);
+}
+
+.link,.link-bis
+{
+	color: var(--mainblue);
+	text-decoration: underline;
+	display: inline-block;
+	padding: .5rem;
+	transition: all .5s;
+}
+
+.link:hover,.link-bis:hover
+{
+	color:var(--orange);
+}
+
+.link-bis
+{
+	color: var(--white);
+}
+
+.anchor{
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color:var(--white);
+	border :.1rem solid var(--white);
+	margin:1rem;
+	border-radius:50%;
+	bottom:0;
+	right: 0rem;
+	width: 4rem;
+	height: 4rem;
+	background-color: var(--orange_a);
+	z-index: 10000;
+	transform:translatex(5rem);
+	transition: background-color 1s;
+}
+.invisible{
+	opacity:0;
+	transform:translateY(5rem);
+	transition:  1s;
+}
+.visible{
+	opacity:1;
+	transform:translateY(0);
+	transition:  1s;
+}
+
+.anchor:hover{
+	background-color: var(--orange);
+}
+
+/* ---------- "BUTTON" LINKS style */
+.more
+{
+	display: inline-block;
+	color: var(--white);
+	text-decoration: none;
+	border-radius: .5rem;
+	background-color: var(--thirdblue);
+	padding: 1rem 2rem;
+	box-shadow: .8rem .8rem .8rem var(--shadow);
+	max-width: 20rem;
+	transition:  .3s;
+}
+
+.more:hover
+{
+	background-color: var(--orange);
+	transform: scale(1.1);
+}
+
+/* ----------  Categories name style */
+.category
+{
+	background-color: var(--thirdblue) ;
+	color: var(--white);
+	padding:.3rem .5rem;
+	border-radius : .5rem;
+}
+
+/* ----------  MESSAGES INFO STYLES */
+.info-box
+{
+	background-color: var(--info);
+	padding: .5rem;
+	margin:1rem;
+	border-radius: .8rem;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.info-box div:first-child
+{
+	font-size: 6rem;
+	color: var(--thirdblue);
+	margin-right: 2rem;
+	text-shadow: 0rem 0rem .8rem  var(--shadow);
+}
+
+.error,.info,.success
+{
+	color: #fff;
+	text-align: center;
+	padding:1rem;
+}
+
+.error
+{
+	background-color: var(--red);
+}
+
+.info
+{
+	background-color: var(--info);
+}
+
+.success
+{
+	background-color: var(--success);
+}
+
+/* ----------  FORMS GLOBAL STYLE*/
+.form
+{
+	margin-right: auto;
+	margin-left: auto;
+	border:.1rem solid var(--mainblue);
+	padding:1rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.form div +  div
+{
+	margin-top:1rem;
+}
+
+.form label
+{
+	display: block;
+	font-weight: bold;
+}
+
+.form input,.form textarea,.form select
+{
+	padding:.8rem;
+	border-radius:.4rem;
+	border: .1rem solid var(--mainblue);
+}
+
+.form input,.form textarea,.form select
+{
+	min-width:100%;
+}
+
+.form input[type="submit"],.form input[type="reset"]
+{
+	min-width: 10rem;
+	margin:1rem;
+}
+
+.form input[type="submit"]:hover
+{
+	background-color: var(--info);
+color: var(--white)}
+
+.form input[type="reset"]:hover
+{
+	background-color: var(--red);
+	color: var(--white);
+}
+
+.submit-contenair
+{
+	display: flex;
+	justify-content: space-between;
+}
+
+span.form-error-message
+{
+	color:red;
+}
+
+/* ----------  TABLES GLOBAL STYLE */
+.table
+{
+	width:100%;
+}
+
+.table thead
+{
+	display: none;
+	background-color: var(--info);
+}
+
+.table tr
+{
+	display: block;
+	margin-bottom: 5rem;
+	border: .1rem solid var(--mainblue);
+	padding:1rem;
+	border-radius: .8rem;
+}
+
+.table td
+{
+	display: block;
+	text-align: right;
+	min-height: 2rem;
+}
+
+.table td:before
+{
+	content: attr(data-label);
+	float: left;
+	font-weight: bold;
+}
+
+/* ---------- BUTTONS UPDATE AND DELETE STYLES */
+.btn-modif,.btn-delete
+{
+	border-radius: .4rem;
+	padding: .5rem 1rem;
+	cursor:pointer;
+	transition: 0.5s;
+}
+
+.btn-delete
+{
+	color : var(--red);
+	border : .1rem solid  var(--red);
+}
+
+.btn-delete:hover
+{
+	color: var(--white);
+	background-color: var(--red);
+	border : .1rem solid  var(--red);
+}
+
+.btn-modif
+{
+	background-color: var(--btn);
+	display: inline-block;
+	color: var(--success);
+	border : .1rem solid  var(--success);
+	text-align: center;
+}
+
+.btn-modif:hover
+{
+	color: var(--white);
+	background-color: var(--success);
+	border : .1rem solid  var(--success);
+}
+
+/*======================== -------- BODY ------------==========================*/
+body
+{
+	font-size: 1.6rem;
+	font-family:'Roboto', sans-serif;
+	background: center/cover no-repeat url('./assets/fond/fond.jpg') fixed;
+	min-height:100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+/*====================== -------HEADER-----------=======================*/
+.progress-bar
+{
+	position: fixed;
+	z-index: 10000;
+	min-height: 0.6rem;
+	background-color: var(--orange);
+}
+
+.header-banner
+{
+	background: center/cover no-repeat url('./assets/banniere/banniere.jpg');
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2rem;
+}
+
+.title-box
+{
+	text-align: center;
+	background-color: var(--grey);
+	padding: 1rem 3rem;
+	box-shadow: 0.8rem 0.8rem 0.8rem var(--shadow);
+}
+
+.banner-title
+{
+	font-family: 'Luckiest Guy', cursive;
+	font-size: 3rem;
+	color: var(--orange);
+	margin: 0;
+}
+
+.subtitle
+{
+	margin: 0;
+	font-size: 2rem;
+}
+
+/*--------[header] MAIN MENU------------------*/
+.main-menu-box
+{
+	background: var(--mainblue);
+	border-top: 0.1rem dashed var(--white);
+	padding: 0rem;
+}
+
+.display-item
+{
+	display: none;
+}
+
+.mobile-menu-btn
+{
+	background-color: var(--mainblue);
+	cursor: pointer;
+}
+
+.mobile-menu-btn p
+{
+	color: var(--white);
+	text-align: center;
+	margin: 0;
+	padding: 1rem;
+}
+
+.mobile-menu-btn p::before
+{
+	font-family: "Font Awesome 5 Free";
+	content: "\f0c9";
+	font-weight: 900;
+	color: var(--white);
+	padding: 1rem;
+	font-size: 2rem;
+}
+
+/*main-menu */
+.main-menu, .main-menu ul
+{
+	padding-left: 0;
+	margin: 0;
+	list-style: none;
+	text-align: center;
+}
+
+.main-menu li
+{
+	display: block;
+	position: relative;
+	background: var(--mainblue);
+}
+
+.main-menu ul
+{
+	position: relative;
+	z-index: 1000;
+	max-height: 0;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+	box-shadow: .8rem .8rem .8rem var(--shadow);
+	transition: .8s all .3s;
+}
+
+li .sous::after
+{
+	font-family: "Font Awesome 5 Free";
+	content: "\f078";
+	display: inline-block;
+	font-weight: 900;
+	padding: 0rem 0.5rem;
+}
+
+.main-menu li:hover ul
+{
+	max-height: 30em;
+}
+
+.main-menu ul li
+{
+	display: inherit;
+	background-color: var(--thirdblue);
+}
+
+/*-----main-menu Link styles ------------*/
+/*--- Common ---*/
+.main-menu a
+{
+	text-decoration: none;
+	display: block;
+	padding: 0.8rem 3.2rem;
+}
+
+/*---Links 1st level---*/
+.main-menu >li >a
+{
+	color: var(--white);
+}
+
+.main-menu >li:hover >a
+{
+	text-decoration: underline;
+}
+
+/*---links 2nd level---*/
+.main-menu ul>li a
+{
+	color: var(--white);
+	padding: 0.8rem ;
+}
+
+.main-menu ul> li:hover a
+{
+	text-decoration: underline;
+}
+
+/*----END MAIN MENU------------*/
+/*=============================== ------------HOMEPAGE-------------=================================*/
+/*----[homepage] SLIDER----------*/
+.slider-section
+{
+	padding: 0;
+}
+
+.news-wrapper
+{
+	position: relative;
+	display: flex;
+	margin: 0 auto;
+	padding: 0px;
+	flex-wrap: wrap;
+}
+
+.slider
+{
+	position:relative;
+	background-color: var(--white);
+	border: .1rem solid var(--mainblue);
+	width: 100%;
+	box-shadow: .5rem .5rem .8rem var(--shadow);
+}
+
+.slide-alaune-title
+{
+	position: absolute;
+	background-color: var(--mainblue_a);
+	z-index:100;
+	color:var(--white);
+	padding: .5rem .5rem .5rem 3rem;
+	box-shadow: .4rem .4rem .4rem var(--shadow) ;
+	border-radius: 0rem 0.5rem 0.5rem 0rem;
+	margin:0;
+	top:2rem;
+}
+
+.slider h2,.slider small
+{
+	color: var(--white);
+}
+
+.slider h2
+{
+	font-size: 2rem;
+	margin: 0.5rem;
+}
+
+.slide
+{
+	position: relative;
+	width: 100%;
+	display: none;
+}
+
+.slide.active
+{
+	display: block;
+	animation: show-items 3.0s;
+}
+
+.slide img
+{
+	width:100%;
+	display: block;
+}
+
+.title-slide
+{
+	position: absolute;
+	bottom: 0;
+	padding: 0.5rem;
+	background-color: var(--mainblue_a);
+	width: 100%;
+}
+
+.other-news-list
+{
+	width: 40%;
+	padding: 1rem;
+	width: 100%;
+}
+
+.article-list
+{
+	display: block;
+	padding: 1.6rem 1rem;
+	background-color: var(--white);
+	border: 0.1rem solid var(--mainblue);
+	border-radius: 1rem;
+	margin: 0.5rem 0rem;
+	transition: 0.5s;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: pointer;
+}
+
+.article-list:before
+{
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	content: "\f453";
+	margin-right:1rem;
+}
+
+.article-list:hover
+{
+	background-color: var(--orange);
+	color: var(--white);
+	border: 0.1rem solid  var(--white);
+}
+
+@keyframes show-items
+{
+	from
+	{
+		opacity: 0.4;
+	}
+
+	to
+	{
+		opacity: 1;
+	}
+}
+
+.btn-nav
+{
+	position: absolute;
+	padding: 1rem;
+	top: 50%;
+	font-size: 2rem;
+	margin: 0 1.5rem;
+	cursor: pointer;
+	transform: translateY(-50%);
+}
+
+/*SLIDER ARROWS ICONS*/
+.btn-nav i
+{
+	z-index:100;
+	color: var(--white);
+	text-shadow: .4rem .4rem .4rem var(--black);
+	font-size:3rem;
+	padding: 1rem;
+}
+
+/*RIGHT BUTTTON SLIDER*/
+.right
+{
+	right: 0;
+}
+
+/*===========END SLIDER===================*/
+/*===[homepage] Social Logos--*/
+.social-section
+{
+	background: bottom/cover no-repeat url('./assets/fond/fondsocial.png');
+}
+
+.social-box
+{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.social-logo
+{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 2rem;
+}
+
+.social-logo > div
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 6rem;
+	height: 6rem;
+	padding: 1.6rem;
+	background-color: var(--thirdblue);
+	border-radius: 50%;
+	transition: 0.5s;
+	margin-left: 1.6rem;
+}
+
+.social-logo > div:hover
+{
+	background-color: var(--orange);
+	transform: rotateZ(360deg) scale(1.2);
+}
+
+.social-logo > div i
+{
+	font-size: 4rem;
+	color: var(--white);
+}
+
+/*===[homepage] Club cards Presentation--*/
+.info-card + .info-card
+{
+	margin-top:1rem;
+}
+
+.info-card
+{
+	position: relative;
+	overflow: hidden;
+	border: .1rem solid black;
+}
+
+.info-card figure
+{
+	width: 100%;
+}
+
+.info-card img
+{
+	display: block;
+	min-width: 100%;
+}
+
+.info-card-content
+{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	background-color: var(--white-a);
+	padding: 0rem;
+	font-weight: bold;
+	text-align: center;
+	color: var(--black);
+}
+
+.info-card-content h3
+{
+	background-color: var(--mainblue);
+	color: var(--white);
+	margin: 0;
+}
+
+.info-card-content p
+{
+	padding: 1rem;
+}
+
+/*===[homepage] Game Day--*/
+.gameday-section
+{
+	background: center/cover no-repeat url('./assets/fond/match2.jpg');
+}
+.gameday-box{
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+.gameday-box div{
+	margin: .5rem 0;
+	width: 100%;
+}
+.game-info{
+	padding: 1.4rem;
+}
+.game-info > p:first-child{
+	background-color: var(--orange);
+	font-weight: bold;
+	padding: 1rem;
+}
+/*====================== ---PAGE ARTICLES LIST---=======================*/
+.article-card + .article-card
+{
+	margin-top: .5rem;
+}
+
+.article-card
+{
+	padding: .5rem;
+	border: .1rem solid var(--mainblue);
+	display: flex;
+	background-color: var(--white);
+}
+
+.article-card figure
+{
+	min-width:8rem;
+	margin-right: 1rem;
+	width:25%;
+}
+
+.article-card-content h2
+{
+	font-size:  1.8rem;
+	text-align: left;
+}
+
+.article-card-content p
+{
+	font-size:  1.4rem;
+}
+
+/*====================== ---PAGE ARTICLE DETAILS ----=======================*/
+.article-header
+{
+	margin:1rem 0;
+	padding: 0rem 1rem;
+	border-top: .1rem dashed var(--mainblue);
+	border-bottom: .1rem dashed var(--mainblue);
+	background-color: var(--white);
+}
+
+.article-header h2
+{
+	text-transform: uppercase;
+	text-align: left;
+	padding-left: 0;
+}
+
+.article-details  img
+{
+	min-width: 100%;
+}
+
+.article-details > p
+{
+	text-align: justify;
+}
+
+/*====================== ---STATIC PAGES ----=======================*/
+
+.static-elements-wrapper
+{
+	border-top:.1rem solid var(--mainblue);
+}
+
+.iframe-box
+{
+	text-align: center;
+}
+
+.static-aside
+{
+	border:.1rem solid var(--mainblue);
+	text-align: center;
+	border-radius: .8rem;
+	padding:.5rem;
+}
+
+/* Page BDL -> Box Track Record */
+.section-palmares
+{
+	background: center/cover no-repeat url('./assets/fond/fondloup3.jpg');
+	padding: 3rem 2rem;
+}
+
+.palmares-content
+{
+	display: flex;
+	flex-wrap : wrap;
+	justify-content: space-around;
+}
+
+.palmares-content > div
+{
+	background-color: var(--white-a);
+	width: 100%;
+	text-align: center;
+	margin: 1rem;
+	box-shadow: .8rem .8rem .8rem var(--shadow);
+}
+
+.nb-cup
+{
+	font-size:4rem;
+	font-weight: bold;
+	color: var(--red);
+	margin:0;
+	padding:2rem 5rem;
+	text-shadow: .8rem .8rem .8rem var(--shadow);
+}
+
+.nb-cup::after
+{
+	font-family:"Font Awesome 5 Free";
+	font-weight: 900;
+	content: "\f091";
+	font-size: 3.5rem;
+	color: var(--orange);
+	margin-left : 1rem;
+}
+
+.name-cup
+{
+	font-family: 'Gemunu Libre', sans-serif;
+	letter-spacing: 0.4rem;
+	font-size: 1.8rem;
+	;
+	background-color: var(--mainblue);
+	color: var(--white);
+	padding: .5rem 1.5rem;
+	box-shadow: .8rem .8rem .8rem var(--shadow);
+	margin:0;
+}
+
+/*====================== ---TEAM PAGES ----=======================*/
+.team-statistics
+{
+	text-align: center;
+	font-weight: bold;
+	border: .1rem dashed var(--mainblue);
+	border-radius: .8rem;
+}
+
+.team-statistics i
+{
+	margin-right: .8rem;
+	color: var(--mainblue);
+}
+
+.player-wrapper
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.player-card
+{
+	width:100%;
+	border:.1rem solid var(--mainblue);
+	margin:0.8rem;
+	background-color: var(--thirdblue_a);
+}
+
+.player-content
+{
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	min-height:23rem;
+}
+
+.player-portrait
+{
+	position: absolute;
+	top: 0;
+	z-index:2;
+	transition: transform 1s;
+}
+
+.player-content:hover .player-portrait
+{
+	transform:  translateX(50%);
+}
+
+.player-infos p
+{
+	margin:.8rem;
+	font-weight: bold;
+}
+
+.player-name
+{
+	text-transform: capitalize;
+	font-size: 1.8rem;
+	color: white;
+	font-weight: bold;
+	display: flex;
+	justify-content: space-between;
+	margin:0;
+	background-color: var(--mainblue_a);
+	padding:0 1rem;
+}
+
+/*====================== -------PAGE REQUEST DETAILS------=======================*/
+.details-request header
+{
+	padding: 1rem;
+	font-weight: bold;
+	border: .1rem dashed var(--mainblue);
+	border-radius: .8rem;
+}
+
+/*====================== -----PAGE CALENDAR---=================================*/
+.scoring-box,
+.game-info
+{
+	text-align: center;
+	background-color: var(--white);
+	border: .1rem solid var(--mainblue);
+	text-transform: capitalize;
+	padding-bottom: 1rem;
+	min-width: 30%;
+	box-shadow: .8rem .8rem .8rem var(--shadow);
+}
+
+.scoring-box + .scoring-box
+{
+	margin-top:1.4rem;
+}
+
+.scoring-infos
+{
+	color: var(--white);
+	font-size: 2rem;
+	font-weight: bold;
+	background-color: var(--mainblue);
+	margin-top:0;
+	padding: 1.4rem;
+}
+
+.scoring-infos::before
+{
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	content: "\f073";
+	margin-right:1rem;
+}
+
+.gameReport
+{
+	color: var(--red);
+	border: .1rem solid var(--red);
+	font-weight: bold;
+	padding:0 .5rem;
+}
+
+.scoring-details
+{
+	display: flex;
+	justify-content: center;
+	font-weight: bold;
+	padding: 1.4rem;
+}
+
+.scoring-team
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin:0;
+	min-width: 15rem;
+}
+
+.scoring-team p
+{
+	font-size: 2.4rem;
+	margin:0;
+}
+
+.scoring-team small
+{
+	color: var(--thirdblue);
+	font-size : 1rem;
+}
+
+.scoring-score
+{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--thirdblue);
+}
+
+.scoring-score p
+{
+	color: var(--white);
+	padding: .5rem;
+	font-size: 2.2rem;
+	margin:0;
+}
+
+/*=====================-----PAGE CONNECT ADMIN--==========================*/
+.connect-logo
+{
+	display: flex;
+	justify-content: center;
+}
+
+/*====================== -------PAGE ADMIN------=======================*/
+/* Welcome Admin Message  */
+.admin-info
+{
+	background-color: var(--thirdblue);
+	margin:0;
+	padding:.5rem;
+	color: var(--white);
+}
+
+/* menu admin */
+.admin-menu
+{
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.admin-menu div
+{
+	text-align: center;
+	border: .1rem solid var(--mainblue);
+	padding:1.6rem;
+	width:100%;
+	margin:1rem;
+}
+
+.admin-menu ul li
+{
+	margin:1rem;
+}
+
+.admin-menu  a
+{
+	display: inline-block;
+	color: var(--mainblue);
+	border:.1rem solid var(--mainblue);
+	border-radius: .5rem;
+	background-color: var(--white);
+	padding: 1rem 2rem;
+	box-shadow: .8rem .8rem .8rem var(--shadow);
+	transition:  .3s;
+}
+
+.admin-menu ul li a:hover
+{
+	background-color: var(--orange);
+	color:var(--white);
+}
+
+.admin-tools
+{
+	display :flex;
+	justify-content: center;
+	font-size:3rem;
+	transition:.5s;
+}
+
+/*====================== --------FOOTER----------=======================*/
+.footer
+{
+	width: 100%;
+	margin-top: auto;
+	color: var(--white);
+	background-color: var(--mainblue);
+	text-align: center;
+}
+
+.footer > div
+{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.footer > div img
+{
+	width: 10%;
+}
+
+/*===================================== ------RESPONSIVE / MEDIA QUERIES------======================================*/
+
+/*===================================== ------TABLETS VERSION------======================================*/
+@media screen and (min-width:767px)
+{
+	/*=================================-----[TABLET] HOMEPAGE-----===================================*/
+	/*-----Club Cards-----*/
+	.info-card
+	{
+		display: flex;
+		overflow: hidden;
+	}
+
+	.info-card img
+	{
+		display: block;
+		min-width: 100%;
+	}
+
+	.info-card-content
+	{
+		position: static;
+		background-color: var(--white);
+		color: var(--black);
+	}
+	
+	.gameday-box div{
+		margin: .5rem 0;
+		width: auto;
+	}
+	
+	/*=================================-----[TABLET]ARTICLE LIST page-----===================================*/
+	.article-card-wrapper
+	{
+		padding: 1rem;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
+
+	.article-card-container
+	{
+		width:45%;
+		margin-bottom: 1.6rem;
+	}
+
+	.article-card
+	{
+		flex-direction: column;
+		box-shadow: 0rem 0rem 1rem var(--shadow);
+	}
+
+	.article-card figure
+	{
+		width:100%;
+	}
+
+	.article-card-content
+	{
+		display: flex;
+		flex-direction:column;
+		justify-content:start;
+	}
+
+	/*=================================-----[TABLET] PAGE CALENDAR---=================================*/
+	.next-and-previous-game
+	{
+		display: flex;
+		justify-content: space-around;
+		margin-bottom:2rem;
+	}
+
+	.calendar-contenair
+	{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+
+	.scoring-box
+	{
+		min-width:35rem;
+		width: 45%;
+		margin-bottom: 1rem;
+	}
+
+	.scoring-box + .scoring-box
+	{
+		margin-top:0;
+	}
+
+	/*=================================-----[TABLET]TEAM page-----===================================*/
+	.player-card
+	{
+		width:30rem;
+	}
+
+	/*=================================-----[TABLET]presentation BDL-----===================================*/
+	.palmares-content > div
+	{
+		width: 45%;
+	}
+}
+
+/*===================================== ------DESKTOP VERSION------======================================*/
+@media screen and (min-width:1180px)
+{
+	/*Gobal Style*/
+	.container
+	{
+		max-width: 128rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.mobile-menu-btn
+	{
+		display: none;
+	}
+
+	.form
+	{
+		width:50%;
+		padding:2rem;
+	}
+
+	.form-article
+	{
+		width:80%;
+	}
+
+	/*Table style*/
+	.table
+	{
+		display: table;
+		border-collapse: collapse;
+		text-align: center;
+		border: .1rem solid var(--info);
+	}
+
+	.table thead
+	{
+		display: table-header-group;
+	}
+
+	.table tr
+	{
+		display: table-row;
+		border: none;
+	}
+
+	.table tr:nth-child(even)
+	{
+		background-color: var(--row);
+	}
+
+	.table th
+	{
+		padding: .5rem;
+	}
+
+	.table td
+	{
+		display: table-cell;
+		text-align: center;
+		padding: .5rem;
+	}
+
+	.table td:before
+	{
+		content: "";
+	}
+
+	/*=======================-----[desktop] HEADER-----=========================*/
+	.progress-bar
+	{
+		display: none;
+	}
+
+	.header-banner
+	{
+		flex-direction: row;
+		justify-content: space-around;
+	}
+
+	.title-box
+	{
+		padding: 2rem 6rem;
+	}
+
+	.banner-title
+	{
+		font-size :5rem;
+	}
+
+	/*----MAIN MENU-------*/
+	.main-menu-box
+	{
+		display: flex;
+		justify-content: center;
+		border-top: none;
+	}
+
+	.main-menu li
+	{
+		display: inline-block;
+	}
+
+	.main-menu ul
+	{
+		position: absolute;
+	}
+
+	.main-menu ul li
+	{
+		padding-left: 0;
+	}
+
+	/*=========================-----[Desktop] HOMEPAGE-----==========================*/
+	/*-----Slider-----*/
+	.slider-section
+	{
+		padding: 1rem 2rem;
+	}
+
+	.news-wrapper
+	{
+		justify-content: space-between;
+		flex-wrap: nowrap;
+		overflow:hidden;
+	}
+
+	.slide-alaune-title
+	{
+		padding: 1rem 1rem 1rem 2rem;
+	}
+
+	.slider
+	{
+		width:55%;
+	}
+
+	.title-slide
+	{
+		padding: 3rem;
+	}
+
+	.other-news-list
+	{
+		width:45%;
+	}
+
+	/*Social box*/
+	.social-box
+	{
+		display: flex;
+		justify-content: space-evenly;
+	}
+
+	.social-logo div
+	{
+		margin-right: 1.6rem;
+	}
+
+	/*-----Club Cards-----*/
+	.info-card + .info-card
+	{
+		margin-top: 0;
+	}
+
+	.section-card
+	{
+		display: flex;
+		justify-content: space-around;
+	}
+
+	.info-card
+	{
+		width: 22%;
+		flex-direction: column;
+	}
+
+	.info-card-content
+	{
+		display:flex;
+		flex-direction:column;
+		justify-content:space-around;
+		flex-grow:2;
+	}
+
+	.info-card .more
+	{
+		margin-bottom: 1rem;
+		margin-left: auto;
+		margin-right:auto;
+	}
+
+	/*====================================-----[desktop] PAGE ARTICLES LIST-----=====================================*/
+	.article-card
+	{
+		min-height:31rem;
+	}
+
+	.article-card-container
+	{
+		width:25rem;
+		transition:  .5s;
+	}
+
+	.article-card-container:hover
+	{
+		transform: scale(1.1);
+	}
+
+	.article-card-content h2
+	{
+		font-size:  2rem;
+	}
+
+	/*=================================-----[desktop] PAGE ARTICLES DETAILS---=================================*/
+	.article-details
+	{
+		overflow: hidden;
+	}
+
+	.article-details img
+	{
+		min-width: auto;
+		float:left;
+		margin-right: 1rem;
+	}
+	/*=================================-----[desktop] PAGE TEAM---=================================*/
+	.team-statistics{
+		width:25%;
+	}
+	/*=================================-----[desktop] PAGE CALENDAR---=================================*/
+	.scoring-team small
+	{
+		font-size: 1.2rem;
+	}
+
+	/*=================================-----[desktop] STATIC PAGE---=================================*/
+	.static-elements-wrapper
+	{
+		display: flex;
+		justify-content: space-around;
+		margin: 1rem 0rem;
+	}
+
+	.style-list-icone li
+	{
+		list-style-type: circle;
+		margin-left: 3rem;
+	}
+	
+	.palmares-content > div
+	{
+		width: auto;
+	}
+	/*=================================-----[desktop] ADMIN PAGE---=================================*/
+	.admin-menu div
+	{
+		width:auto;
+	}
+}

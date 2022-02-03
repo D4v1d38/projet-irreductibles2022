@@ -1,0 +1,63 @@
+<?php 
+    if(!$this->connect ->isAdmin()): 
+        header("location:index.php");
+        exit();
+    endif; 
+?>
+
+<section class="section">
+
+    <h2 class="h2">Ajouter un Article</h2>
+    
+    <!-- admin tool menu -->
+    <nav>
+        <ul class="admin-tools">
+            <li><a class="link" href="index.php?action=admin" title="menu admin"><i class="fas fa-arrow-circle-left"></i></a></li>
+        </ul>
+    </nav>
+
+    <!-- show info message on the page is message is isset -->
+    <?php if(isset($_GET['message'])): ?>
+        <p class="<?= htmlspecialchars($_GET['class']) ?>"><?= htmlspecialchars($_GET['message']) ?><p>
+    <?php endif; ?>
+    
+    <!-- Form for add article -->
+    <form class="form form-article" name="form" action="index.php?action=create_article" method="POST" enctype="multipart/form-data">
+        
+        <div>
+            <label for="article_titre">Titre</label>
+            <input type="text" name="article_titre" id="article_titre" required> 
+        </div>
+
+        <div>
+            <label for="article_image">choisir une image : </label>
+            <input type="hidden" name="MAX_FILE_SIZE" value="300000"  />
+            <input type="file" name="article_image" id="article_image" />
+        </div>
+
+        <div>
+            <label for="article_contenu">Article : </label>
+            <textarea name="article_contenu" cols="33" rows="10" placeholder="votre article ... " id="article_contenu" required></textarea>
+        </div>
+
+        <div>
+            <label for="article_auteur">Auteur : </label>
+            <input readonly name="article_auteur" id="article_auteur" value="<?= htmlspecialchars($_SESSION['prenomAdmin'])." ".htmlspecialchars($_SESSION['nomAdmin']) ?>"/>
+        </div>
+        
+        <div>
+            <label for="article-categorie">Catégorie : </label>
+            <select name="article_category" id="article-categorie">
+                <?php foreach($categoriesList as $category): ?>
+                    <option value="<?=htmlspecialchars($category['id_categorie']) ?>"><?=htmlspecialchars($category['nom_cat']) ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+
+        <div class="submit-contenair">
+            <input class="btn-link" type="submit" name="submit" value="Valider"/>
+            <input class="btn-link" type="reset" name="Annuler" value="effacer le contenu"/>
+        </div>
+
+    </form>
+</section>

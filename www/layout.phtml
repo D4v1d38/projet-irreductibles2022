@@ -1,0 +1,113 @@
+<?php
+    $adminSession = new AdminControllers();
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Irréductibles - Supporters des Brûleurs de loups de Grenoble</title>
+    <link rel="icon" href="www/css/assets/img/favicon.jpg" />
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre&family=Kanit:wght@400;500&family=Luckiest+Guy&&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--Jquery-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- style CSS-->
+    <link rel="stylesheet" href="www/css/normalize.css">
+    <link rel="stylesheet" href="www/css/style.css">
+</head>
+    <body>
+    
+        <!-- HEADER -->
+        <header class="container" id="top-page">
+            <div class="progress-bar" id="progress-bar"></div>
+            
+            <!--BANNER-->
+            <a href="index.php" title="Accueil">
+                <div class="header-banner ">
+                    <img src="www/css/assets/banniere/cadreloup.png" alt="Notre logo tête du loup et pattes avec effet de flammes">
+                    <div class="title-box">
+                        <p class="banner-title">Les Irreductibles </p>
+                        <p class="subtitle">Supporters des Brûleurs de Loups depuis 1985!</p>
+                    </div>
+                </div>
+            </a>
+            <!--MOBILE MODE : DISPLAY MENU BUTTON -->
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <p>Menu</p>
+            </div>
+            
+            <!--Main-Menu-->
+            <nav class="main-menu-box display-item" id="menuPrincipal">
+                <ul class="main-menu" >
+                
+                    <li><a href="index.php" title="Accueil">Accueil</a></li>
+                    <li><a href="index.php?action=liste_article" title="Nos articles"> Articles </a></li>
+                    <li><a class="sous"  href="#" title="Notre Club"> Notre club  </a>
+                        <ul>
+                            <li><a href="index.php?action=static_page&page=quisommesnous" title="Qui sommes nous?">Qui sommes nous? </a></li>
+                            <li><a href="index.php?action=static_page&page=lesdeplacements" title="Les déplacements">Les déplacements </a></li>
+                            <li><a href="index.php?action=static_page&page=latribunei" title="La tribune i ">La tribune i</a></li>
+                            <li><a href="index.php?action=static_page&page=nousrejoindre" title="Nous rejoindre">Nous rejoindre</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="sous" href="#" title="Les BDL">Les BDL</a>
+                        <ul>
+                            <li><a href="index.php?action=team&id_saison=1" title="Effectif">Effectif 2021</a></li>
+                            <li><a href="index.php?action=calendar" title="Calendrier">Calendrier</a></li>
+                            <li><a href="index.php?action=static_page&page=bdl" title="présentation de l'équipe">L'équipe que nous supportons</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.php?action=contact_us" title="contactez-nous">Contacts</a></li>
+                    <?php if($adminSession->isAdmin()):?>
+                    <li><a href="index.php?action=admin" title="admin">Menu Gestion</a></li>
+                    <li><a href="index.php?action=deconnect" title="admin">Deconnexion</a></li>
+                    <?php endif;?>
+                </ul>
+            </nav>
+            <?php if($adminSession->isAdmin()):?>
+                    <p class="admin-info"> Bonjour <?=htmlspecialchars($_SESSION['prenomAdmin']) ?> tu es connecté en tant que <?=htmlspecialchars($_SESSION['fonctionAdmin']) ?> </p>
+            <?php endif;?>
+        </header>
+        
+        <!--MAIN -->
+        <main class="container">
+            
+        <!-- DYNAMIC SECTION -->
+        <?php require $template.".phtml"; ?>
+        <!-- END DYNAMIC SECTION -->
+        
+            <!-- Anchor :go to top of the page-->
+
+            <a class="anchor invisible" href="#top-page" title="haut de page" id="top-page-anchor">
+                <i class="fas fa-arrow-up"></i>
+            </a>
+            
+        </main>
+        
+        <!--FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <img src="www/css/assets/img/logo_irre_rond.png" alt="Logo des irréductibles">
+                <div>
+                    <p>Les Irréductibles, club de supporters des Brûleurs de Loups de Grenoble</p>
+                    <p>Site créé par David Rotolo</p>
+                    <a class="link-bis" href="index.php?action=static_page&page=mentions" title="Voir les mentions légales">Mentions légales</a>
+                </div>
+            </div>
+        </footer>
+        
+        <!--SCRIPTS -->
+        <script src="www/js/slider.js"></script>
+        <script src="www/js/gameDayAjax.js"></script>
+        <script src="www/js/progressbar.js"></script>
+        <script src="www/js/main.js"></script>
+        <script type ="module" src="www/js/formData.js"></script>
+    </body>
+</html>

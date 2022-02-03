@@ -1,0 +1,93 @@
+<?php
+    $adminSession = new AdminControllers();
+?>
+
+<?php if($adminSession->isAdmin()==true):?>
+
+<!-- PAGE : Homeadmin-->
+<section class="section">
+
+    <!-- Show info message if message is isset-->
+    <?php if(isset($_GET['message'])): ?>
+    <p class="<?= htmlspecialchars($_GET['class']) ?>"><?= htmlspecialchars($_GET['message']) ?><p>
+    <?php endif; ?>
+    <!-- ADMIN PANEL PARTH-->
+    <h1 class="h1">Panneau d'administration</h1>
+
+    <nav class="admin-menu">
+        <!-- block articles menu -->
+        <div>
+            <h2 class="h2">Gestion des Articles</h2>
+            <ul>
+                <li><a  href="index.php?action=create_article" title ="ajouter un article">Ajouter un article</a></li>
+                <li><a  href="index.php?action=article_manager" title ="gestion des articles">Gerer les articles</a></li>
+            </ul>
+        </div>
+        
+        <!-- block player menu if admin rights ok-->
+        <?php if($adminSession->isAdmin() && $_SESSION['niveauAdmin']==1):?>
+        <div>
+            <h2 class="h2">Gestion des joueurs et de l'effectif</h2>
+            <ul>
+                <li><a  href="index.php?action=create_player" title="ajouter un joueur">Ajouter un joueur</a></li>
+                <li><a  href="index.php?action=player_manager" title="gerer les joueurs">Gerer les joueurs</a></li>
+                <li><a  href="index.php?action=player_to_season" title="affilier un joueur">Affilier un joueur à un effectif</a></li>
+                <li><a  href="index.php?action=season_manager" title="gerer les effectifs">Gerer les effectifs</a></li>
+            </ul>
+        </div>
+        
+        <!-- block games menu if admin rights ok-->
+        <div>
+            <h2 class="h2">Gestion des Matchs</h2>
+            <ul>
+                <li><a  href="index.php?action=create_game" title ="ajouter une rencontre">Ajouter une rencontre</a></li>
+                <li><a  href="index.php?action=game_manager" title ="gerer les rencontres">Gerer les rencontres</a></li>
+            </ul>
+        </div>
+        <?php endif; ?>
+
+        <!-- block player request contact if admin rights ok-->
+        <?php if($adminSession->isAdmin() && $_SESSION['niveauAdmin']<=10):?>
+        <div>
+            <h2 class="h2">Gestion des messages de contacts</h2>
+            <ul>
+                <li><a href="index.php?action=message_manager" title="Consulter les messages">Consulter les messages</a></li>
+            </ul>
+        </div>
+        <?php endif; ?>
+        
+    </nav>
+</section>
+
+<?php else:?>
+
+<!-- ADMIN CONNEXION PARTH-->
+<section class="section">    
+    <h1 class="h1">Espace Administrateur</h1>
+    <?php if(isset($_GET['message'])): ?>
+        <p class="<?= htmlspecialchars($_GET['class']) ?>"><?= htmlspecialchars($_GET['message']) ?><p>
+    <?php endif; ?>
+
+    <div class="connect-logo">
+        <img  src="www/css/assets/img/logo_irre_rond.png" alt="logo des irréductibles">
+    </div>
+    <!-- admin connexion form-->
+    <form class="form" name="form" action="index.php?action=admin" method="POST" >
+
+        <div>
+            <label for="admin_email">E-mail</label>
+            <input type="mail" name="email" id="admin_email" required />
+        </div>
+
+        <div>
+            <label for="admin-pwd">Mot de passe</label>
+            <input type="password" name="password" id="admin-pwd" required />
+        </div>
+
+        <div class="submit-contenair">
+            <input class="btn-link" type="submit" name="submit" value="Se connecter"/>
+            <input class="btn-link" type="reset" name="Annuler" value="Annuler"/>
+        </div>
+    </form>
+</section>
+<?php endif; ?>

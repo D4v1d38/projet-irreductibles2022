@@ -1,0 +1,56 @@
+<?php 
+    if(!$this->connect ->isAdmin()): 
+        header("location:index.php");
+        exit();
+    endif; 
+?>
+<!-- PAGE : Prequest management -->
+<section class="section">
+    <h1 class="h1">Gestion des messages de contacts</h1>
+    
+    <!-- admin tool menu -->
+    <nav>
+        <ul class="admin-tools">
+            <li><a class="link" href="index.php?action=admin" title="menu admin"><i class="fas fa-arrow-circle-left"></i></a></li>
+        </ul>
+    </nav>
+
+    <!-- Show info message if message is isset -->
+    <?php if(isset($_GET['message'])): ?>
+    <p class="<?= htmlspecialchars($_GET['class']) ?>"><?= htmlspecialchars($_GET['message']) ?><p>
+    <?php endif; ?>
+    
+    <!-- table for show and manage request -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Prénon-Nom</th>
+                <th>Téléphone</th>
+                <th>Objet</th>
+                <th>Consulter</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach($requestList as $item): ?>
+            <tr>
+                <td data-label="Date" ><?= htmlspecialchars($item['date']); ?></td>
+                <td data-label="Prénon-Nom" ><?= htmlspecialchars($item['prenom'])." " .htmlspecialchars($item['nom']); ?></td>
+                <td data-label="Téléphone" ><?= htmlspecialchars($item['telephone']); ?></td>
+                <td data-label="Objet" ><?= htmlspecialchars($item['objet']); ?></td>
+                <td>
+                    <a class="btn-modif" href="index.php?action=message_details&id_message=<?=htmlspecialchars($item['id_contact'])?>" title="voir message "><i class="far fa-eye"></i></a>
+                </td>
+                <td>
+                    <form method="POST" action="index.php?action=message_delete">
+                        <input type="hidden" name="message_delete" value="<?=htmlspecialchars($item['id_contact'])?>">
+                        <button class="btn-delete" type="submit" value='supprimer' title="supprimer" ><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</section>

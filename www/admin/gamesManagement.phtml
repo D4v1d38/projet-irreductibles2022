@@ -1,0 +1,64 @@
+<?php 
+    if(!$this->connect ->isAdmin()): 
+        header("location:index.php");
+        exit();
+    endif; 
+?>
+
+<!-- PAGE: games Management-->
+<section class="section">
+    <h1 class="h1">Gestion des rencontres</h1>
+
+    <!-- Tools menu for admin-->
+    <nav>
+        <ul class="admin-tools">
+            <li><a class="link" href="index.php?action=admin" title="menu admin"><i class="fas fa-arrow-circle-left"></i></a></li>
+            <li><a  class="link" href="index.php?action=create_game" title ="ajouter une rencontre"><i class="far fa-calendar-plus"></i></a></li>
+        </ul>
+    </nav>
+
+    <!-- show info message on the page is message is isset -->
+    <?php if(isset($_GET['message'])): ?>
+    <p class="<?= htmlspecialchars($_GET['class']) ?>"><?= htmlspecialchars($_GET['message']) ?><p>
+    <?php endif; ?>
+    
+    <!-- table for show and manage games-->
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Compétition</th>
+                <th>Statut</th>
+                <th>Domicile</th>
+                <th>Score Dom.</th>
+                <th>Score Ext.</th>
+                <th>Exterieur</th>
+                <th>Modifier</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach($gamesManage as $item): ?>
+            <tr>
+                <td data-label="Date"><?= htmlspecialchars($item['dateGame']); ?></td>
+                <td data-label="Compétition"><?= htmlspecialchars($item['competition']); ?></td>
+                <td data-label="Statut"><?= htmlspecialchars($item['statut']); ?></td>
+                <td data-label="Equipe"><?= htmlspecialchars($item['villeDom']); ?></td>
+                <td data-label="Score "><?= htmlspecialchars($item['scoreDom']) ?></td>
+                <td data-label="Score"><?= htmlspecialchars($item['scoreExt']) ?></td>
+                <td data-label="Equipe"><?= htmlspecialchars($item['villeExt']); ?></td>
+                <td>
+                    <a class="btn-modif" href="index.php?action=update_game&id_game=<?=htmlspecialchars($item['id'])?>" title="modifier le joueur"><i class="fas fa-pencil-alt"></i></a>
+                </td>
+                <td>
+                    <form method="POST" action="index.php?action=delete_game">
+                        <input type="hidden" name="delete_game" value="<?=htmlspecialchars($item['id'])?>">
+                        <button class="btn-delete" type="submit" value='supprimer' ><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</section>

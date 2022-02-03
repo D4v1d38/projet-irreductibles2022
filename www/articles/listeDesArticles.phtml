@@ -1,0 +1,27 @@
+<!-- SECTION show list of articles -->
+
+<section class="section">
+    <h1 class="h1">Nos Articles</h1>
+    
+    <div class="article-card-wrapper">
+        <?php foreach($articlesList as $item): ?>
+        <div class="article-card-container">
+            <a  href="index.php?action=article&id_article=<?=htmlspecialchars($item['id_article'])?>">
+                <div class="article-card">
+                    <figure>
+                        <img src="www/img/articles/<?= htmlspecialchars($item['image'])?>" alt="<?= htmlspecialchars($item['image'])?>">
+                    </figure>
+                    <div class="article-card-content" >
+                        <small class="category"><?= htmlspecialchars($item['nom_cat']) ?></small>
+                        <h2 class="h2 h-red "><?= htmlspecialchars($item['titre']) ?></h2>
+                        <p>écrit par  <?= htmlspecialchars($item['prenom']) ." le ". htmlspecialchars($item['dateformat']) ?> </p>
+                    </div>
+                </div>
+            </a>             
+        </div>
+        <?php endforeach; ?>
+    </div>
+    
+</section>
+
+

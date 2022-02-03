@@ -1,0 +1,96 @@
+<!-- SECTION SCHEDULE and SCORE GAMES-->
+<section class="section">
+    <h1 class="h1">Calendrier & Résultats</h1>
+
+    <!-- show latest game if data exist-->
+    <div class="next-and-previous-game">
+        <?php if(!empty($lastGame)):?>
+        <div>
+            <h2 class="h2">Dernier Match</h2>
+            <div class="scoring-box">
+                <p class="scoring-infos" ><?= htmlspecialchars($lastGame['dateGame'])?><p>
+                <p><?= htmlspecialchars($lastGame['competition'])." " ?><?php if( !empty($item['statut']) && $item['statut']!="conforme"): ?><span class="gameReport"><?= htmlspecialchars($lastGame['statut'])?></span> <?php endif; ?></p>
+
+                <div class="scoring-details">
+                    <div class="scoring-team">
+                        <p><?= htmlspecialchars($lastGame['villeDom'])?></P>
+                        <small><?= htmlspecialchars($lastGame['equipeDom'])?></small>
+                    </div>
+
+                    <div class="scoring-score">
+                        <p><?= htmlspecialchars($lastGame['scoreDom'])?></P>
+                        <p>-</P>
+                        <p><?= htmlspecialchars($lastGame['scoreExt'])?></P>
+                    </div>
+
+                    <div class="scoring-team">
+                        <p><?= htmlspecialchars($lastGame['villeExt'])?></P>
+                        <small><?= htmlspecialchars($lastGame['equipeExt'])?></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+        <!-- show next game if data exist-->
+        <?php if(!empty($nextGame)):?>
+        <div>
+            <h2 class="h2">Prochain Match</h2>
+            <div class="scoring-box">
+                <p class="scoring-infos" ><?= htmlspecialchars($nextGame['dateGame'])?><p>
+                <p><?= htmlspecialchars($nextGame['competition'])." " ?><?php if( !empty($nextGame['statut']) && $nextGame['statut']!="conforme"): ?><span class="gameReport"><?= htmlspecialchars($nextGame['statut'])?></span> <?php endif; ?></p>
+
+                <div class="scoring-details">
+                    <div class="scoring-team">
+                        <p><?= htmlspecialchars($nextGame['villeDom'])?></P>
+                        <small><?= htmlspecialchars($nextGame['equipeDom'])?></small>
+                    </div>
+
+                    <div class="scoring-score">
+                        <p><?= htmlspecialchars($nextGame['scoreDom'])?></P>
+                        <p>-</P>
+                        <p><?= htmlspecialchars($nextGame['scoreExt'])?></P>
+                    </div>
+
+                    <div class="scoring-team">
+                        <p><?= htmlspecialchars($nextGame['villeExt'])?></P>
+                        <small><?= htmlspecialchars($nextGame['equipeExt'])?></small>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+    </div>
+    
+    <!-- show all games schedule-->
+    <h2 class="h2">Calendrier Complet</h2>
+    <div class="calendar-contenair">
+        <?php foreach($allMatchs as $item): ?>
+        <div class="scoring-box">
+            <p class="scoring-infos" ><?= htmlspecialchars($item['dateGame'])?><p>
+            <p><?= htmlspecialchars($item['competition'])." " ?><?php if( !empty($item['statut'])&& $item['statut']!="conforme"): ?><span class="gameReport"><?= htmlspecialchars($item['statut'])?></span> <?php endif; ?></p>
+
+                <div class="scoring-details">
+                    <div class="scoring-team">
+                        <p><?= htmlspecialchars($item['villeDom'])?></P>
+                        <small><?= htmlspecialchars($item['equipeDom'])?></small>
+                    </div>
+
+                    <div class="scoring-score">
+                        <p><?= htmlspecialchars($item['scoreDom'])?></P>
+                        <p>-</P>
+                        <p><?= htmlspecialchars($item['scoreExt'])?></P>
+                    </div>
+
+                    <div class="scoring-team">
+                        <p><?= htmlspecialchars($item['villeExt'])?></P>
+                        <small><?= htmlspecialchars($item['equipeExt'])?></small>
+                    </div>
+                </div>
+        </div>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+
+

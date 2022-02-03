@@ -1,0 +1,55 @@
+<!-- SECTION form contact-us page -->
+
+<section class="section">    
+    <h1 class="h1">Contactez-nous</h1>
+
+    <!-- show message info if message is isset -->
+    <?php if(isset($_GET['message'])): ?>
+        <p class="<?= htmlspecialchars($_GET['class']) ?>"><?= htmlspecialchars($_GET['message']) ?><p>
+    <?php endif; ?>
+
+    <!-- Form contact us-->
+    <form class="form" name="form" action="index.php?action=contact_us" method="POST" id="formcontact">
+    
+        <div>
+            <label for="contact_firstname">Votre prénom *:</label>
+            <input type="text" name="firstname" id="contact_firstname" required/>
+            
+        </div>
+
+        <div>
+            <label for="contact_name">Votre nom *:</label>
+            <input type="text" name="name" id="contact_name" required />
+        </div>
+        
+        <div>
+            <label for="contact_tel">Votre télephone :</label>
+            <input type="tel" name="tel" placeholder="0123456789" id="contact_tel"/>
+        </div>
+
+        <div>
+            <label for="contact_email">Votre e-mail *:</label>
+            <input type="email" name="email" id="contact_email" required />
+        </div>
+
+        <div>
+            <label for="contact_object">Objet du message *:</label>
+            <input type="text" name="object" maxlength="30" id="contact_object" required />
+        </div>
+
+        <div>
+            <label for="contact_content">Votre message *: </label>
+            <textarea name="content" cols="33" rows="10" placeholder="votre message ... " id="contact_content" required></textarea>
+        </div>
+
+
+        <div class="submit-contenair">
+            <input class="btn-link" type="submit" name="submit" value="Envoyer"/>
+            <input class="btn-link" type="reset" name="Annuler" value="Annuler la saisie"/>
+        </div>
+    </form>
+
+    <p>Lors de l'envoi du formulaire, les informations envoyées sont stockées dans notre base de données le temps que votre question soit traitée.</p>
+    <p>Une fois la réponse traitée, les informations sont supprimées de notre base.</p>
+    <p>si vous préferez nous envoyer un mail veuillez écrire à cette adresse:<a class="link" href="mailto:irreductibles.grenoble@gmail.com" title="envoyer un mail">irreductibles.grenoble@gmail.com</a></p>
+</section>
